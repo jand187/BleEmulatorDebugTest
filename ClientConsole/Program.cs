@@ -19,13 +19,16 @@ namespace ClientConsole
             Console.WriteLine("Press any key to call service");
             Console.ReadKey();
 
-            var factory = new ChannelFactory<IDetectionService>(new BasicHttpBinding());
+            var factory = new ChannelFactory<IDetectionService>(new WSHttpBinding());
             var endpointAddress = new EndpointAddress(baseAddress);
             var channel = factory.CreateChannel(endpointAddress);
 
-            var instruments = channel.DetectInstruments("ab");
+            var instruments = channel.DetectInstruments("a");
 
-            instruments.ToList().ForEach(Console.Write);
+            instruments.ToList().ForEach(Console.WriteLine);
+
+            Console.ReadKey();
+
         }
     }
 }
