@@ -11,7 +11,8 @@ namespace ClientConsole
 
         static Program()
         {
-            baseAddress = new Uri("http://localhost:62363/DetectionService.svc");
+            baseAddress = new Uri("https://localhost:62363/DetectionService.svc"); 
+            //baseAddress = new Uri("http://localhost:62363/DetectionService.svc");
         }
 
         private static void Main(string[] args)
@@ -19,7 +20,7 @@ namespace ClientConsole
             Console.WriteLine("Press any key to call service");
             Console.ReadKey();
 
-            var factory = new ChannelFactory<IDetectionService>(new WSHttpBinding());
+            var factory = new ChannelFactory<IDetectionService>(new BasicHttpsBinding());
             var endpointAddress = new EndpointAddress(baseAddress);
             var channel = factory.CreateChannel(endpointAddress);
 
