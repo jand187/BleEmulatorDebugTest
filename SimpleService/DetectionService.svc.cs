@@ -8,13 +8,13 @@ namespace SimpleService
     public interface IDetectionService
     {
         [OperationContract]
-        IEnumerable<string> DetectInstruments(string startsWith);
+        IEnumerable<string> DetectInstruments(string contains);
     }
 
 
     public class DetectionService : IDetectionService
     {
-        public IEnumerable<string> DetectInstruments(string startsWith)
+        public IEnumerable<string> DetectInstruments(string contains)
         {
             return new[]
             {
@@ -23,7 +23,7 @@ namespace SimpleService
                 "missekat",
                 "kattemis",
                 "fedebadeabe",
-            }.Where(s => s.StartsWith(startsWith));
+            }.Where(s => s.Contains(contains));
         }
     }
 }
